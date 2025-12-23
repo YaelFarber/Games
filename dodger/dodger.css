@@ -1,0 +1,155 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fffef3;
+    color: #4b3a3a;
+    text-align: center;
+}
+
+.border {
+    border: 0.5px solid #4b3a3a;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#game {
+    position: relative;
+    width: 70%;
+    height: 90%;
+    padding-bottom: 2%;
+    background-color: #fff8fc;
+    overflow: hidden;
+}
+
+#score-board {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: #fffef3;
+    border-radius: 4px;
+}
+
+#player {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../dodger/dodger-assets/girl.png');
+    transition: bottom 0.3s;
+}
+
+.strawberry,
+.broccoly {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        top: -60px;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+.card {
+    width: 60%;
+    height: 60%;
+    padding: 3%;
+    font-size: 1em;
+    background-color: #fff8fc;
+}
+
+.card h1 {
+    margin-bottom: 20px;
+    font-size: xx-large;
+}
+
+.card p {
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: large;
+}
+
+.btn {
+    background-color: #fffef3;
+    border: 1px solid #4b3a3a;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transform: translateX(-10px);
+}
+
+.btn:hover {
+    background-color: #fffae1;;
+}
+
+#restart-game {
+    transform: translateX(-55px);
+}
+
+#start-again {
+    transform: translateX(-97px);
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10%;
+    transform: translateX(80px);
+}
+
+#game-over-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5%;
+    margin-top: 0;
+}
+
+#new-best {
+    margin-bottom: 0;
+}
+
+#victory-img {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 5%;
+}
+
+#home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #fff8fc;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#home:hover {
+    background-color: #fde8f4;
+}
