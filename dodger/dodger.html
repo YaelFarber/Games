@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Straberry Dodger</title>
+    <link rel="stylesheet" href="../dodger/dodger.css">
+    <link rel="icon" type="image/x-icon" href="../dodger/dodger-assets/strawberry.png">
+</head>
+<body>
+    <button id="home" class="border" onclick="goHome()">Home</button>
+
+    <!--start screen-->
+    <div id="start" class="card border">
+        <h1>STRAWBERRY DODGER</h1>
+        <p>Move Left or Right to Collect the <strong>Strawberries</strong>
+            <br><strong>Avoid </strong> the <strong>Broccolies</strong>!
+            <br>Reach Score of <strong>200</strong> and You <strong>WIN</strong>!
+        </p>
+        <img src="../dodger/dodger-assets/strawberry.png" alt="Strawberry Icon" class="icon">
+        <button id="start-game" class="btn" onclick="startGame()">Start Game</button>
+    </div>
+
+    <!--game screen-->
+    <div id="game" class="hidden border">
+        <div id="player"></div>
+        <div id="score-board" class="border">
+            <span>Strawberries: <span id="strawberries">0</span></span> |
+            <span>Score: <span id="score">0</span></span> |
+            <span>Level: <span id="level">1</span></span> |
+            <span>Best Score: <span id="best">0</span></span> |
+            <span>Best Level: <span id="best-level">1</span></span>
+        </div>
+    </div>
+
+    <!--game-over screen-->
+    <div id="game-over" class="card hidden border">
+        <h1>Game Over!</h1>
+        <p>Ooopss You Hit a Broccoly!  Better Luck Next Time...</p>
+        <p>You collected <span id="collected-strawberries">0</span> strawberries
+            <br>Your score is: <span id="final-score">0</span>, 
+             You Reached Level: <span class="final-level">1</span>
+        </p>
+        <p id="new-best" class="hidden">You Got New <strong>Best</strong> Score!</p>
+        <img id = "game-over-img" src="../dodger/dodger-assets/game-over.png" alt="Game Over Icon" class="icon">
+        <button id="restart-game" class="btn" onclick="restartGame()">Play Again</button>
+
+    </div>
+
+    <!--victory screen-->
+    <div id="victory" class="card hidden border">
+        <h1>Congratulations!</h1>
+        <p>You Reached Final Score of <strong>200</strong> and <strong>WON</strong> the game!
+        <br>You Reached Level <span class="final-level">1</span></p>
+        <img id="victory-img" src="../dodger/dodger-assets/victory.png" alt="Victory Icon" class="icon">
+        <button id="start-again" class="btn" onclick="restartGame()">Play Again</button>
+    </div>
+    <script src="../dodger/dodger.js"></script>
+</body>
+</html>
