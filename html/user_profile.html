@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="user-profile-page">
+        <h1>Your Player Profile</h1>
+        <img src="../media/user-icon.png" alt="User Icon" class="user-icon">
+    </header>
+
+    <main class="user-profile-page content">
+        <section class="details">
+            <div class="profile-field">
+                <h3 class="field-label">User Name</h3>
+                <span id="user-name" class="field-value">Y</span>
+            </div>
+
+            <div class="profile-field">
+                <h3 class="field-label">Score</h3>
+                <span id="score" class="field-value">879</span>
+           </div>
+
+           <div class="profile-field">
+                <h3 class="field-label">Last Login</h3>
+                <span id="last-login" class="field-value">17 Dec 20</span>
+           </div>
+
+           <div class="profile-field">
+                <h3 class="field-label">Last Game Played</h3>
+                <span id="last-game-played" class="field-value">Super Mario</span>
+           </div>
+        </section>
+
+        <section class="contacts">
+             <div class="profile-field">
+                <h3 class="field-label">Email</h3>
+                <span id="email" class="field-value">y@example.com</span>
+            </div>
+
+            <div class="profile-field">
+                <h3 class="field-label">Phone Number</h3>
+                <span id="phone-number" class="field-value">000-000-000</span>
+            </div>
+
+            <div class="profile-field">
+                <h3 class="field-label">Address</h3>
+                <span id="address" class="field-value">Isrl</span>
+            </div>
+        </section>
+
+        <section class="actions">
+            <button id="edit-profile-btn" class="btn">Edit Profile</button>
+            <button id="change-password-btn" class="btn">Change Password</button>
+        </section>
+    </main>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

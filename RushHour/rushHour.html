@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rush Hour - Logic Game</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="rushHour.css">
+</head>
+<body class="rush-hour-body">
+    <header class="main-header">
+        <h1>Level: <span id="level-num">1</span>/10</h1>
+        <div class="auth-buttons">
+            <button onclick="window.location.href='../html/index.html'" class="btn">Home</button>
+            <button onclick="resetLevel()" class="btn">Reset</button>
+        </div>
+    </header>
+    <!--board --> 
+    <div id="game-container">
+        <div id="game-board" style="width: 400px; height: 400px; position: relative; margin: 20px auto; background-color: #112240; border: 2px solid #64ffda; border-radius: 8px;">
+        </div>
+    </div>
+      <!--reference to JS file --> 
+    <script src="rushHour.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* while preesing on the car 
+cursor : the mouse will change to a hand  holding 
+filter : the color of the car wil be brighter in 20 percent.*/
+.vehicle:active { 
+    cursor: grabbing; 
+    filter: brightness(1.2);/* unlike regular shadow-box it doesnt recignize the div as a square ,
+                               but goes around the colored pixls only*/
+}
+
+
+/*  cursor chnge to a hand while hovering 
+    no blue line while selecting - make it fell like a game and not like a web page
+    drope-shadow- with the car like filter wont treat the elemnt as a box. 
+    filter - slow transition */
+.vehicle {
+    position: absolute;
+    cursor: grab;
+    user-select: none;
+    background-color: transparent;
+    
+    filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.5));
+    transition: filter 0.2s;
+}
+
+
+
+/* virtual div on the board exit sign*/
+#game-board::after {
+    content: 'EXIT';
+    position: absolute;
+    right: -45px;
+    top: 145px; 
+    color: #ff4d4d;
+    font-weight: bold;
+    font-family: sans-serif;
+    transform: rotate(90deg);
+    letter-spacing: 2px;
+}

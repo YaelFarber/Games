@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub - Home</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>GAME UNIVERSE</h1>
+        <div class="auth-buttons" id="auth-section">
+            <button onclick="location.href='login.html'" class="btn">Login</button>
+            <button onclick="location.href='signup.html'" class="btn">Sign Up</button>
+            <button onclick="location.href='user_profile.html'" class="btn">My Profile</button>
+        </div>
+    </header>
+
+    <main class="game-grid-container">
+        <div class="game-grid">
+            
+            <div class="game-card active large" onclick="location.href='../dodger/dodger.html'">
+                <img src="../dodger/dodger-assets/strawberry.png" alt="Strawberry Dodger">
+                <div class="game-label">Strawberry Dodger</div>
+            </div>
+
+            <div class="game-card active" onclick="location.href='../RushHour/rushHour.html'">
+                <img src="../media/RUSH HOUR.png" alt="Logic Game">
+                <div class="game-label">Rush Hour Puzzle</div>
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('ADVENTURE')">
+                <div class="overlay">ADVENTURE</div>
+                <img src="../media/adventure.jpg" alt="Locked">
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('RACING')">
+                <div class="overlay">RACING</div>
+                <img src="../media/racing.jpg" alt="Locked">
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('ACTION')">
+                <div class="overlay">ACTION</div>
+                <img src="../media/action.jpg" alt="Locked">
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('COMING SOON')">
+                <div class="overlay">CHESS</div>
+                <img src="../media/chess.jpg" alt="Locked">
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('MULTIPLAYER')">
+                <div class="overlay">PING PONG</div>
+                <img src="../media/ping pong.jpg" alt="Locked">
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('BRAIN TEASER')">
+                <div class="overlay">BRAIN TEASER</div>
+                <img src="../media/brain.jpg" alt="Locked">
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('CLASSIC')">
+                <div class="overlay">DRESS TO IMPRESS</div>
+                <img src="../media/dress.jpg" alt="Locked">
+            </div>
+
+            <div class="game-card locked" onclick="showLockedAlert('SPORTS')">
+                <div class="overlay">SPORTS</div>
+                <img src="../media/sports.jpg" alt="Locked">
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
