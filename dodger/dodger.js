@@ -204,7 +204,7 @@ function goHome() {
         clearInterval(throwInterval);
         window.location.href = '../dodger/dodger.html';
     } else {
-        window.location.href = '../html/apps.html';
+        window.location.href = '../html/index.html';
     }
     
 }

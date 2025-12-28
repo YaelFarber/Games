@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Game Center</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="user-profile-page">
+        <h1>Create New Account</h1>
+        <form id="signup-form" class="details">
+            <div class="profile-field">
+                <label class="field-label">Username</label>
+                <input type="text" id="new-username" required class="field-value">
+            </div>
+            <div class="profile-field">
+                <label class="field-label">Password</label>
+                <input type="password" id="new-password" required class="field-value">
+            </div>
+            <div class="profile-field">
+                <label class="field-label">Email</label>
+                <input type="email" id="new-email" required class="field-value">
+            </div>
+            <div class="profile-field">
+                <label class="field-label">Phone Number</label>
+                <input type="tel" id="new-phone" required class="field-value">
+            </div>
+            <div class="profile-field">
+                <label class="field-label">Address</label>
+                <input type="text" id="new-address" required class="field-value">
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <button type="button" onclick="location.href='../index.html'" class="btn" style="background-color: grey;">Cancel</button>
+        </form>
+    </div>
+    <script src="../js/auth.js"></script>
+</body>
+</html>
