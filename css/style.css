@@ -21,6 +21,10 @@ body {
     line-height: 1.6;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* 2. Header & Navigation */
 .main-header {
     display: flex;
@@ -215,4 +219,103 @@ input.field-value:focus {
 
 .game-card.tall {
     grid-row: span 2;
+}
+
+/* 6. Leaderboard - inside game grid card */
+.leaderboard-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: default;             
+}
+
+.leaderboard-card:hover {
+  transform: none;              
+  border-color: rgba(100, 255, 218, 0.18);
+}
+
+.leaderboard-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(136, 146, 176, 0.2);
+}
+
+.leaderboard-title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--neon-green);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.leaderboard-empty {
+  padding: 10px 6px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.leaderboard-list {
+  display: grid;
+  gap: 10px;
+}
+
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: rgba(10, 25, 47, 0.55);
+  border: 1px solid rgba(100, 255, 218, 0.12);
+}
+
+.leaderboard-row.placeholder {
+  opacity: 0.55;
+}
+
+.medal {
+  font-size: 22px;
+  text-align: center;
+  filter: drop-shadow(0 0 6px rgba(100, 255, 218, 0.2));
+}
+
+.player-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.player-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.player-score {
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--bg-dark);
+  background: var(--neon-green);
+  box-shadow: 0 0 14px rgba(100, 255, 218, 0.22);
+}
+
+.player-sub {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.game-card.wide {
+  grid-column: span 2;
+}
+.game-card.tall {
+  grid-row: span 2;
 }

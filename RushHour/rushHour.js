@@ -240,6 +240,7 @@ function updateScore() {
   GameStorageManager.updateCurrentUser((u) => {
     u.totalScore = (u.totalScore || 0) + 50;
     u.lastGamePlayed = "Rush Hour";
+    u.lastPlayedAt = Date.now();
   });
 }
 

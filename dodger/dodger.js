@@ -228,6 +228,7 @@ function endGame() {
     GameStorageManager.updateCurrentUser((u) => {
         u.totalScore = (u.totalScore || 0) + currentScore;
         u.lastGamePlayed = "Strawberry Dodger";
+        u.lastPlayedAt = Date.now();
     });
 
 }
