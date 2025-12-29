@@ -235,21 +235,14 @@ function checkWin() {
     }
 }
 
+// update user score
 function updateScore() {
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));// updating player info 
-    if (currentUser) {
-        currentUser.totalScore = (currentUser.totalScore || 0) + 50;
-        currentUser.lastGamePlayed = "Rush Hour";
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));// returning updated user
-        
-        let users = JSON.parse(localStorage.getItem('users')) || [];// updaring entire users to be updated 
-        let userIndex = users.findIndex(u => u.username === currentUser.username);
-        if (userIndex !== -1) {
-            users[userIndex] = currentUser;
-            localStorage.setItem('users', JSON.stringify(users));
-        }
-    }
+  GameStorageManager.updateCurrentUser((u) => {
+    u.totalScore = (u.totalScore || 0) + 50;
+    u.lastGamePlayed = "Rush Hour";
+  });
 }
+
 // botton ewrstart func
 function resetLevel() {
     initLevel(currentLevelIndex);
