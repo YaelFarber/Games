@@ -59,16 +59,6 @@ function renderLeaderboard(players) {
 }
 
 
-function showEmptyState(listEl, emptyEl) {
-  emptyEl.classList.remove("hidden");
-  listEl.classList.add("hidden");
-}
-
-function hideEmptyState(listEl, emptyEl) {
-  emptyEl.classList.add("hidden");
-  listEl.classList.remove("hidden");
-}
-
 /* ---------- Components ---------- */
 
 function createPlayerRow(player, index, isPlaceholder = false) {

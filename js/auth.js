@@ -74,3 +74,14 @@ if (loginForm) {
         }
     });
 }
+
+// Logout button functionality
+function logOut(){
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function () {
+      localStorage.removeItem('currentUser');
+
+      window.location.replace('start.html');
+    });
+  }
+}

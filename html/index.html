@@ -11,7 +11,7 @@
         <h1>GAME UNIVERSE</h1>
         <div class="auth-buttons" id="auth-section">
             <button id="profileBtn" onclick="location.href='user_profile.html'" class="btn">My Profile</button>
-            <button id="logoutBtn" class="btn">Logout</button>
+            <button id="logoutBtn" onclick="logOut()" class="btn">Logout</button>
         </div>
     </header>
 
@@ -24,7 +24,7 @@
                 </div>
 
                 <div id="leaderboard-empty" class="leaderboard-empty hidden">
-                    No scores yet — play a game to appear here 🎮
+                    No scores yet — play a game to appear here
                 </div>
 
                 <div id="leaderboard-list" class="leaderboard-list hidden"></div>
@@ -85,9 +85,8 @@
     
     </main>
 
-    <script src="../js/guard.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/leaderboard.js"></script>
-    <script src="../js/auth-ui.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>
