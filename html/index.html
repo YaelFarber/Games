@@ -10,9 +10,8 @@
     <header class="main-header">
         <h1>GAME UNIVERSE</h1>
         <div class="auth-buttons" id="auth-section">
-            <button onclick="location.href='login.html'" class="btn">Login</button>
-            <button onclick="location.href='signup.html'" class="btn">Sign Up</button>
-            <button onclick="location.href='user_profile.html'" class="btn">My Profile</button>
+            <button id="profileBtn" onclick="location.href='user_profile.html'" class="btn">My Profile</button>
+            <button id="logoutBtn" class="btn">Logout</button>
         </div>
     </header>
 
@@ -72,6 +71,8 @@
         </div>
     </main>
 
+    <script src="../js/guard.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/auth-ui.js"></script>
 </body>
 </html>
