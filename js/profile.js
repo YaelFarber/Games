@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Retrieve the current session data from Local Storage
     const userData = localStorage.getItem('currentUser');
 
-    // 2. Security Check: If no user is logged in, redirect to the login page [cite: 16, 18]
+    // 2. Security Check: If no user is logged in, redirect to the login page
     if (!userData) {
         alert("Access Denied! Please login to view your profile.");
         window.location.href = 'login.html';
         return;
     }
 
-    // 3. Parse the JSON string back into a JavaScript object [cite: 11]
+    // 3. Parse the JSON string back into a JavaScript object
     const user = JSON.parse(userData);
 
     // 4. Update the DOM elements with the user's personal information 

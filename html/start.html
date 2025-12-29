@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome - Game Universe</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <h1>GAME UNIVERSE</h1>
+  </header>
+
+  <main class="user-profile-page">
+    <h1>Welcome</h1>
+    <p style="text-align:center; margin-bottom: 18px; color: var(--text-dim);">
+      Please log in to access the game hub.
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+      <button class="btn" onclick="location.href='login.html'">Login</button>
+      <button class="btn" onclick="location.href='signup.html'">Sign Up</button>
+    </div>
+  </main>
+
+  <script>
+    // If already logged in -> go straight to games hub
+    (function () {
+      try {
+        const raw = localStorage.getItem('currentUser');
+        if (!raw) return;
+
+        const user = JSON.parse(raw);
+        if (user && user.username) {
+          window.location.replace('index.html');
+        }
+      } catch (_) {
+        // ignore invalid JSON
+      }
+    })();
+  </script>
+</body>
+</html>
