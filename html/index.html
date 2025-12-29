@@ -17,7 +17,20 @@
 
     <main class="game-grid-container">
         <div class="game-grid">
-            
+            <!-- Leaderboard Card -->
+            <div class="game-card leaderboard-card wide tall" id="leaderboard-widget">
+                <div class="leaderboard-header">
+                    <h2 class="leaderboard-title">Top Players</h2>
+                </div>
+
+                <div id="leaderboard-empty" class="leaderboard-empty hidden">
+                    No scores yet — play a game to appear here 🎮
+                </div>
+
+                <div id="leaderboard-list" class="leaderboard-list hidden"></div>
+            </div>
+
+            <!-- Game Cards -->
             <div class="game-card active large" onclick="location.href='../dodger/dodger.html'">
                 <img src="../dodger/dodger-assets/strawberry.png" alt="Strawberry Dodger">
                 <div class="game-label">Strawberry Dodger</div>
@@ -69,10 +82,12 @@
             </div>
 
         </div>
+    
     </main>
 
     <script src="../js/guard.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/leaderboard.js"></script>
     <script src="../js/auth-ui.js"></script>
 </body>
 </html>
