@@ -1,31 +1,70 @@
 const player = document.getElementById('player');
 const game = document.getElementById('game');
+
 const startScreen = document.getElementById('start');
 const gameOverScreen = document.getElementById('game-over');
 const victoryScreen = document.getElementById('victory');
+
 const newBestScoreMsg = document.getElementById('new-best');
 const finalScore = document.getElementById('final-score');
+
 const strawberries = document.getElementById('strawberries');
 const score = document.getElementById('score');
 const best = document.getElementById('best');
 const bestLevel = document.getElementById('best-level');
 const levelDisplay = document.getElementById('level');
+
 const collectedStrawberries = document.getElementById('collected-strawberries');
 const finalLevel = document.querySelectorAll('.final-level');
 
 let strawberriesCount = 0;
 let currentScore = 0;
+
 let bestScore = 0;
 let reachLevel = 1;
+
 let level = 1;
 let scrollSpeed = 3;
-let throwInterval;
+let throwInterval = null;
+
 let isGameOver = false;
 let isVictory = false;
+let isNewBestThisRun = false;
+
 const OBJECT_SIZE = 50;
+
 
 const strawberryIcon = '../dodger/dodger-assets/strawberry.png';
 const brocollyIcon = '../dodger/dodger-assets/broccoly.png';
+
+
+// GET BEST SCORE KEY FROM STORAGE
+function getBestScoreKey() {
+  return GameStorageManager.userKey('dodgerBestScore');
+}
+
+// GET BEST LEVEL KEY FROM STORAGE
+function getBestLevelKey() {
+  return GameStorageManager.userKey('dodgerBestLevel');
+}
+
+// LOAD HIGH SCORES FROM STORAGE
+function loadDodgerHighScoresForUser() {
+  bestScore = parseInt(GameStorageManager.getStorageValue(getBestScoreKey(), '0'), 10);
+  reachLevel = parseInt(GameStorageManager.getStorageValue(getBestLevelKey(), '1'), 10);
+
+  if (Number.isNaN(bestScore)) bestScore = 0;
+  if (Number.isNaN(reachLevel)) reachLevel = 1;
+}
+
+// SAVE BEST SCORE TO STORAGE
+function saveBestScore() {
+  GameStorageManager.setStorageValue(getBestScoreKey(), String(bestScore));
+}
+// SAVE BEST LEVEL TO STORAGE
+function saveBestLevel() {
+  GameStorageManager.setStorageValue(getBestLevelKey(), String(reachLevel));
+}
 
 // UPDATE THE SCORE BOARD
 function updateScoreBoard() {
@@ -90,13 +129,12 @@ function checkCollision(obj, isStrawberry) {
             if(isStrawberry) {
                 strawberriesCount++;
                 currentScore += 10;
-                localStorage.setItem('dodgerAccScore', (parseInt(localStorage.getItem('dodgerAccScore')) || 0) + 10);
                 
-                if(currentScore > bestScore) {
+                if (currentScore > bestScore) {
                     bestScore = currentScore;
-                    localStorage.setItem('dodgerBestScore', bestScore);
+                    isNewBestThisRun = true;
+                    saveBestScore();
                 }
-                
 
 
                 if(currentScore >= 200) {
@@ -121,7 +159,8 @@ function checkLevelUp() {
     if(strawberriesCount >0 && strawberriesCount % 10 === 0) {
         level++;
         reachLevel = Math.max(level, reachLevel);
-        localStorage.setItem('dodgerBestLevel', reachLevel);
+        saveBestLevel();
+
         scrollSpeed = Math.max(1, scrollSpeed - 0.5);
         clearInterval(throwInterval);
         throwInterval = setInterval(throwObjects, Math.max(500, 1000 - level*50));
@@ -147,14 +186,17 @@ function startGame() {
     strawberriesCount = 0;
     currentScore = 0;
     level = 1;
-    reachLevel = parseInt(localStorage.getItem('dodgerBestLevel') || '1');
-    bestScore = parseInt(localStorage.getItem('dodgerBestScore') || '0');
+    isNewBestThisRun = false;
     scrollSpeed = 3;
+
+    loadDodgerHighScoresForUser();
     updateScoreBoard();
+
     startScreen.classList.add('hidden');
     gameOverScreen.classList.add('hidden');
     victoryScreen.classList.add('hidden');
     game.classList.remove('hidden');
+    
     throwInterval = setInterval(throwObjects, 1000);
 }
 
@@ -165,14 +207,13 @@ function endGame() {
     collectedStrawberries.textContent = strawberriesCount;
     finalLevel.forEach(elem => elem.textContent = level);
 
-    if(currentScore > bestScore) {
-        bestScore = currentScore;
-        localStorage.setItem('dodgerBestScore', bestScore);
+    if (isNewBestThisRun) {
         newBestScoreMsg.classList.remove('hidden');
         newBestScoreMsg.textContent = `You Got New Best Score! ${bestScore}`;
     } else {
         newBestScoreMsg.classList.add('hidden');
     }
+
 
     game.classList.add('hidden');
 
@@ -183,9 +224,12 @@ function endGame() {
     }
 
     clearStrawberriesAndBroccolies();
-    localStorage.setItem('userScore', (parseInt(localStorage.getItem('userScore'), 10) || 0) + currentScore);
-    localStorage.setItem('lastGamePlayed', 'dodger');
-    localStorage.setItem('lastTimePlayed', new Date().toISOString());   
+    
+    GameStorageManager.updateCurrentUser((u) => {
+        u.totalScore = (u.totalScore || 0) + currentScore;
+        u.lastGamePlayed = "Strawberry Dodger";
+    });
+
 }
 
 // RESTART GAME
@@ -209,3 +253,14 @@ function goHome() {
     
 }
 
+// INITIALIZE UI FROM STORAGE
+function initDodgerUIFromStorage() {
+  loadDodgerHighScoresForUser();
+  updateScoreBoard();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDodgerUIFromStorage);
+} else {
+  initDodgerUIFromStorage();
+}
