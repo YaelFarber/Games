@@ -1,3 +1,5 @@
+// gameStorageManager.js is responsible for managing game-related data in localStorage,
+// including user-specific data and general key-value pairs.
 const GameStorageManager = {
   userKey(prefix) {
     try {
