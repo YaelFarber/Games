@@ -153,3 +153,13 @@ body {
 #home:hover {
     background-color: #fde8f4;
 }
+
+.level-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55px;
+  height: 4px;
+  background: #4b3a3a;
+  opacity: 0.35;
+}

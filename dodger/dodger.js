@@ -156,7 +156,7 @@ function checkCollision(obj, isStrawberry) {
 
 // CHECK TO LEVEL UP
 function checkLevelUp() {
-    if(strawberriesCount >0 && strawberriesCount % 10 === 0) {
+    if(strawberriesCount > 0 && strawberriesCount % 10 === 0) {
         level++;
         reachLevel = Math.max(level, reachLevel);
         saveBestLevel();
