@@ -180,7 +180,7 @@ function handleMove(e) {
     const occupied = getOccupiedCells(draggedVehicle.id);//array of occupied spots.
 
     if (draggedVehicle.orientation === 'h') {
-        let newX = Math.round((e.clientX - board.left - offset) / CELL_SIZE);
+        let newX = Math.round((e.clientX  - board.left - offset) / CELL_SIZE);
         // according to corsor position - board left limit - offset = new positoin .
         // divided by cell_size gives us the slot the car will move to.
         newX = Math.max(0, Math.min(newX, 6 - draggedVehicle.length));
@@ -189,7 +189,7 @@ function handleMove(e) {
         const step = newX > draggedVehicle.x ? 1: -1; // left or right 
         while (final !== newX){
             let next = final +step;
-            if (isPathClear(draggedVehicle.x,draggedVehicle.y,next,draggedVehicle.y,draggedVehicle.length,'h',occupied)){
+            if (isPathClear(next,draggedVehicle.y,draggedVehicle.length,'h',occupied)){
                 final= next;
             }
             else{
@@ -205,7 +205,7 @@ function handleMove(e) {
         const step = newY > draggedVehicle.y ? 1:-1;
         while(final !== newY){
             let next =final +step;
-            if(isPathClear(draggedVehicle.x,draggedVehicle.y,draggedVehicle.x,next,draggedVehicle.length,'v',occupied)){
+            if(isPathClear(draggedVehicle.x,next,draggedVehicle.length,'v',occupied)){
                 final= next;
             }
             else{
@@ -217,7 +217,7 @@ function handleMove(e) {
     }
 }
 // checks if the destination is in the occupied slots array .
-function isPathClear(oldX, oldY, newX, newY, length, orientation, occupied) {
+function isPathClear( newX, newY, length, orientation, occupied) {
     for (let i = 0; i < length; i++) {
         const checkX = orientation === 'h' ? newX + i : newX;
         const checkY = orientation === 'v' ? newY + i : newY;
@@ -261,10 +261,6 @@ function updateScore() {
   });
 }
 
-// botton ewrstart func
-function resetLevel() {
-    initLevel(currentLevelIndex);
-}
 // botton ewrstart func
 function resetLevel() {
     initLevel(currentLevelIndex);
