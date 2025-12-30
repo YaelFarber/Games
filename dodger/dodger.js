@@ -260,8 +260,4 @@ function initDodgerUIFromStorage() {
   updateScoreBoard();
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initDodgerUIFromStorage);
-} else {
-  initDodgerUIFromStorage();
-}
+document.addEventListener('DOMContentLoaded', initDodgerUIFromStorage);
