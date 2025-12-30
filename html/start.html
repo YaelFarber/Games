@@ -25,19 +25,13 @@
 
   <script>
     // If already logged in -> go straight to games hub
-    (function () {
-      try {
-        const raw = localStorage.getItem('currentUser');
-        if (!raw) return;
-
-        const user = JSON.parse(raw);
-        if (user && user.username) {
-          window.location.replace('index.html');
-        }
-      } catch (_) {
-        // ignore invalid JSON
+    const raw = localStorage.getItem('currentUser');
+    if (raw) {
+      const user = JSON.parse(raw);
+      if (user && user.username) {
+        window.location.replace('index.html');
       }
-    })();
+    }
   </script>
 </body>
 </html>
