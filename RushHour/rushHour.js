@@ -75,7 +75,8 @@ const levels = [
     { id: 'v3', x: 0, y: 4, length: 3, orientation: 'h', type: 'orange_taxi' },
     { id: 'v4', x: 4, y: 3, length: 2, orientation: 'v', type: 'blue_car' },
     { id: 'v5', x: 3, y: 5, length: 2, orientation: 'h', type: 'yellow_car' }
-]
+    ]
+
 ];
 
 let currentLevelIndex = 0;// always stating in level :0
@@ -184,19 +185,35 @@ function handleMove(e) {
         // divided by cell_size gives us the slot the car will move to.
         newX = Math.max(0, Math.min(newX, 6 - draggedVehicle.length));
         // constraining the car to move only inside the board by max left spot and 0 - right edge.
-        
-        if (isPathClear(draggedVehicle.x, draggedVehicle.y, newX, draggedVehicle.y, draggedVehicle.length, 'h', occupied)) {
-            draggedVehicle.x = newX;
-            el.style.left = `${newX * CELL_SIZE + 3}px`;// +3 is added to make sure the car isnt' stepping on the bordder of the board.
+        let final= draggedVehicle.x;
+        const step = newX > draggedVehicle.x ? 1: -1; // left or right 
+        while (final !== newX){
+            let next = final +step;
+            if (isPathClear(draggedVehicle.x,draggedVehicle.y,next,draggedVehicle.y,draggedVehicle.length,'h',occupied)){
+                final= next;
+            }
+            else{
+                break;
+            }
         }
+        draggedVehicle.x=final;
+        el.style.left = `${final * CELL_SIZE + 3}px`;
     } else {
         let newY = Math.round((e.clientY - board.top - offset) / CELL_SIZE);
         newY = Math.max(0, Math.min(newY, 6 - draggedVehicle.length));
-
-        if (isPathClear(draggedVehicle.x, draggedVehicle.y, draggedVehicle.x, newY, draggedVehicle.length, 'v', occupied)) {
-            draggedVehicle.y = newY;
-            el.style.top = `${newY * CELL_SIZE + 3}px`;
+        let final = draggedVehicle.y;
+        const step = newY > draggedVehicle.y ? 1:-1;
+        while(final !== newY){
+            let next =final +step;
+            if(isPathClear(draggedVehicle.x,draggedVehicle.y,draggedVehicle.x,next,draggedVehicle.length,'v',occupied)){
+                final= next;
+            }
+            else{
+                break;
+            }
         }
+        draggedVehicle.y= final;
+        el.style.top = `${final * CELL_SIZE + 3}px`;
     }
 }
 // checks if the destination is in the occupied slots array .
@@ -244,6 +261,10 @@ function updateScore() {
   });
 }
 
+// botton ewrstart func
+function resetLevel() {
+    initLevel(currentLevelIndex);
+}
 // botton ewrstart func
 function resetLevel() {
     initLevel(currentLevelIndex);
